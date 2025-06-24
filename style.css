@@ -1,0 +1,70 @@
+/* --- VARIABLES Y GLOBALES --- */
+:root {
+    --bg-color: #0a0a1a;
+    --primary-color: #00f6ff;
+    --secondary-color: #ff00ff;
+    --text-color: #e0e0e0;
+    --font-title: 'Orbitron', sans-serif;
+    --font-text: 'Roboto Mono', monospace;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background-color: var(--bg-color);
+    color: var(--text-color);
+    font-family: var(--font-text);
+    min-height: 100vh;
+    overflow-x: hidden;
+    position: relative;
+}
+
+body::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: repeating-linear-gradient(0deg, rgba(0,0,0,0.5), rgba(0,0,0,0.5) 1px, transparent 1px, transparent 3px);
+    z-index: 2;
+    pointer-events: none;
+}
+
+/* --- FONDO Y HEADER --- */
+#particles-js { position: fixed; top: 0; left: 0; width: 100%; height: 100%; z-index: -1; }
+.content { text-align: center; z-index: 1; padding: 20px; }
+h1 { font-family: var(--font-title); font-size: clamp(2.5rem, 8vw, 5rem); color: var(--primary-color); text-transform: uppercase; text-shadow: 0 0 5px var(--primary-color), 0 0 10px var(--primary-color), 0 0 20px var(--primary-color), 0 0 40px var(--primary-color); }
+#typewriter { color: var(--secondary-color); text-shadow: 0 0 5px var(--secondary-color), 0 0 10px var(--secondary-color); }
+header p { margin-top: 1rem; font-size: clamp(0.9rem, 2vw, 1.2rem); max-width: 600px; margin-left: auto; margin-right: auto;}
+
+/* --- EFECTO GLITCH --- */
+.glitch { position: relative; display: inline-block; }
+.glitch::before, .glitch::after { content: attr(data-text); position: absolute; top: 0; left: 0; width: 100%; height: 100%; background: var(--bg-color); overflow: hidden; }
+.glitch::before { left: 2px; text-shadow: -2px 0 var(--secondary-color); animation: glitch-anim-1 2s infinite linear reverse; }
+.glitch::after { left: -2px; text-shadow: -2px 0 var(--primary-color); animation: glitch-anim-2 2s infinite linear reverse; }
+@keyframes glitch-anim-1 { 0%, 100% { clip-path: inset(45% 0 50% 0); } 20% { clip-path: inset(10% 0 85% 0); } 40% { clip-path: inset(70% 0 5% 0); } 60% { clip-path: inset(90% 0 2% 0); } 80% { clip-path: inset(30% 0 60% 0); } }
+@keyframes glitch-anim-2 { 0%, 100% { clip-path: inset(5% 0 90% 0); } 20% { clip-path: inset(80% 0 5% 0); } 40% { clip-path: inset(25% 0 70% 0); } 60% { clip-path: inset(10% 0 88% 0); } 80% { clip-path: inset(60% 0 30% 0); } }
+
+/* --- ESTILOS PARA LOS MÓDULOS DE SOLUCIÓN --- */
+.solutions-container { width: 90%; max-width: 900px; margin: 2rem auto; z-index: 1; position: relative; }
+.problem { background: rgba(10, 20, 40, 0.7); border: 1px solid var(--primary-color); margin-bottom: 2rem; padding: 1.5rem; backdrop-filter: blur(5px); box-shadow: 0 0 15px rgba(0, 246, 255, 0.2); clip-path: polygon(0 0, calc(100% - 20px) 0, 100% 20px, 100% 100%, 0 100%); }
+.problem-title { font-family: var(--font-title); color: var(--secondary-color); text-shadow: 0 0 5px var(--secondary-color); margin-bottom: 1rem; font-size: 1.5rem; }
+.enunciado { border-left: 3px solid var(--primary-color); padding-left: 1rem; margin-bottom: 1.5rem; font-size: 1rem; }
+.enunciado p { font-size: 1rem; margin-top: 0.5rem; line-height: 1.7; }
+.divider { color: var(--secondary-color); opacity: 0.6; margin: 0 1rem; }
+.solution-toggle { display: inline-block; font-family: var(--font-title); text-transform: uppercase; text-decoration: none; color: var(--primary-color); background: transparent; border: 1px solid var(--primary-color); padding: 0.5rem 1rem; cursor: pointer; transition: all 0.2s ease; margin-top: 1rem; }
+.solution-toggle:hover { background-color: var(--primary-color); color: var(--bg-color); box-shadow: 0 0 10px var(--primary-color); }
+.solution-content { max-height: 0; overflow: hidden; opacity: 0; transition: max-height 0.7s ease-in-out, opacity 0.5s ease-in-out, margin-top 0.7s ease-in-out; }
+.solution-content.visible { max-height: 2500px; opacity: 1; margin-top: 1.5rem; }
+.solution-content h4 { color: var(--primary-color); margin-top: 1rem; margin-bottom: 0.5rem; }
+.solution-content p { font-size: 1rem; line-height: 1.7; margin-top: 0.5rem; }
+.visualization { border-top: 1px dashed var(--secondary-color); margin-top: 2rem; padding-top: 1.5rem; }
+.visualization h4 { color: var(--primary-color); text-shadow: 0 0 5px var(--primary-color); margin-bottom: 1rem; font-size: 1.2rem; }
+.graph-container { width: 100%; margin-top: 1rem; background: rgba(0, 0, 0, 0.4); border: 1px solid rgba(0, 246, 255, 0.3); padding: 10px; box-shadow: inset 0 0 15px rgba(0,0,0,0.7); }
+canvas, svg { display: block; width: 100%; height: auto; aspect-ratio: 16 / 9; }
+.section-divider { border: 0; height: 1px; background-image: linear-gradient(to right, rgba(0,0,0,0), var(--secondary-color), rgba(0,0,0,0)); margin: 2rem 0; }

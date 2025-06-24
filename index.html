@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nexus Terminal // Log de Examen [VERSIÓN COMPLETA Y FUNCIONAL]</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@700&family=Roboto+Mono&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+    <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+    <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+</head>
+<body>
+
+    <div id="particles-js"></div>
+
+    <header class="content">
+        <h1>
+            <span class="glitch" data-text="NEXUS">NEXUS</span>
+            TERMINAL:<span id="typewriter"></span>
+        </h1>
+        <p>Decodificando log de examen de Matemáticas I [VERSIÓN COMPLETA]. Accediendo a todos los módulos de datos y renderización gráfica...</p>
+    </header>
+
+    <main class="solutions-container">
+
+        <!-- ===== PROBLEMA 1 ===== -->
+        <section class="problem" id="problem-1">
+            <h2 class="problem-title">Módulo 1: Continuidad de Funciones</h2>
+            <div class="enunciado">
+                <p>Hallar los parámetros `a` y `b` para que la siguiente función sea continua:</p>
+                <p>$$ f(x) = \begin{cases} ax - b, & \text{si } x < 2 \\ x^2 - 1, & \text{si } x \ge 2 \end{cases} $$</p>
+            </div>
+            <button class="solution-toggle">Renderizar Visualización</button>
+            <div class="solution-content">
+                <h4>Solución:</h4>
+                <p>Se igualan los límites laterales en `x=2`: \( \lim_{x\to2^-} (ax-b) = \lim_{x\to2^+} (x^2-1) \). Esto resulta en la condición: `2a - b = 3`.</p>
+                <div class="visualization">
+                    <h4><span class="glitch" data-text="Render Gráfico [Canvas]">Render Gráfico [Canvas]</span></h4>
+                    <p>Renderizando `f(x) = 2x - 1` (magenta) y `f(x) = x² - 1` (cian) para el caso `a=2, b=1`. El punto de unión en `(2,3)` se resalta para mostrar la continuidad.</p>
+                    <div class="graph-container">
+                        <canvas id="graph-continuity"></canvas>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ===== PROBLEMA 2 (COMPLETO) ===== -->
+        <section class="problem" id="problem-2">
+            <h2 class="problem-title">Módulo 2: Cálculo de Límites</h2>
+            <div class="enunciado">
+                <p>a) \( \lim_{x\to7} \frac{2 - \sqrt{x-3}}{x^2 - 49} \) <span class="divider">|</span> b) \( \lim_{x\to0} \frac{1 - \sqrt{\cos(x)}}{x^2} \)</p>
+                <p>c) \( \lim_{x\to0} (1 + \sin(x))^{\frac{1}{x}} \) <span class="divider">|</span> d) \( \lim_{x\to-1} \frac{x^2 - 1}{x^2 + 3x + 2} \)</p>
+            </div>
+            <button class="solution-toggle">Renderizar Visualización</button>
+            <div class="solution-content">
+                <h4>Resultados de los Módulos</h4>
+                <p><strong>a) Límite por Conjugado:</strong> \( \frac{2 - \sqrt{x-3}}{x^2 - 49} \cdot \frac{2 + \sqrt{x-3}}{2 + \sqrt{x-3}} = \frac{-(x-7)}{(x-7)(x+7)(2+\sqrt{x-3})} \to -\frac{1}{56} \)</p>
+                <p><strong>b) Límite Trigonométrico Notable:</strong> \( \frac{1 - \cos(x)}{x^2 (1 + \sqrt{\cos(x)})} = \left(\frac{1 - \cos(x)}{x^2}\right) \cdot \frac{1}{1 + \sqrt{\cos(x)}} \to \frac{1}{2} \cdot \frac{1}{2} = \frac{1}{4} \)</p>
+                <p><strong>c) Límite de tipo `e`:</strong> \( \left[ (1 + \sin(x))^{\frac{1}{\sin(x)}} \right]^{\frac{\sin(x)}{x}} \to e^1 = e \)</p>
+                <p><strong>d) Límite por Factorización:</strong> \( \frac{(x-1)(x+1)}{(x+1)(x+2)} \to \frac{-2}{1} = -2 \)</p>
+                <div class="visualization">
+                    <h4><span class="glitch" data-text="Render Gráfico [Canvas]">Render Gráfico [Canvas]</span></h4>
+                    <p>Visualizando el concepto de límite para el inciso (d). Renderizando `y = (x-1)/(x+2)`. El círculo abierto en `(-1, -2)` visualiza el "agujero" en la función original.</p>
+                    <div class="graph-container">
+                        <canvas id="graph-limit"></canvas>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ===== PROBLEMA 3 ===== -->
+        <section class="problem" id="problem-3">
+            <h2 class="problem-title">Módulo 3: Derivada por Definición</h2>
+            <div class="enunciado">
+                <p>Demuestre por definición que: $$ (2x^2)' = 4x $$</p>
+            </div>
+            <button class="solution-toggle">Renderizar Visualización</button>
+            <div class="solution-content">
+                <h4>Resolución:</h4>
+                <p>$$ f'(x) = \lim_{h\to0} \frac{2(x+h)^2 - 2x^2}{h} = \lim_{h\to0} \frac{h(4x + 2h)}{h} = 4x $$</p>
+                <div class="visualization">
+                    <h4><span class="glitch" data-text="Render Gráfico [Canvas]">Render Gráfico [Canvas]</span></h4>
+                    <p>Función `f(x) = 2x²` (cian) y su derivada `f'(x) = 4x` (magenta). Observe cómo el valor Y de la recta (derivada) corresponde a la pendiente de la parábola.</p>
+                    <div class="graph-container">
+                        <canvas id="graph-derivative"></canvas>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+        <!-- ===== PROBLEMA 4 (COMPLETO) ===== -->
+        <section class="problem" id="problem-4">
+            <h2 class="problem-title">Módulo 4: Reglas de Derivación</h2>
+            <div class="enunciado">
+                <p><strong>(a)</strong> Derivar \( f(x) = -\frac{1}{6(1 - 3\cos(x))^2} \)</p>
+                <p><strong>(b)</strong> Derivar \( f(x) = \frac{1}{\sqrt{b}} \arcsin\left(x\sqrt{\frac{b}{a}}\right) \)</p>
+            </div>
+            <button class="solution-toggle">Renderizar Visualización</button>
+            <div class="solution-content">
+                <h4>Solución (a): Regla de la Cadena</h4>
+                <p>$$ f'(x) = \frac{\sin(x)}{(1 - 3\cos(x))^3} $$</p>
+                <div class="visualization">
+                    <h4><span class="glitch" data-text="Render Gráfico 4(a) [SVG]">Render Gráfico 4(a) [SVG]</span></h4>
+                    <p>Renderizando la función original `f(x)`. Las discontinuidades verticales (asíntotas) son evidentes.</p>
+                    <div class="graph-container">
+                        <svg id="graph-complex-a"></svg>
+                    </div>
+                </div>
+                
+                <hr class="section-divider">
+
+                <h4>Solución (b): Arcoseno y Regla de la Cadena</h4>
+                <p>$$ f'(x) = \frac{1}{\sqrt{a - bx^2}} $$</p>
+                <div class="visualization">
+                    <h4><span class="glitch" data-text="Render Gráfico 4(b) [Canvas]">Render Gráfico 4(b) [Canvas]</span></h4>
+                    <p>La función `arcsin(u)` solo está definida para `u` en `[-1, 1]`. Para el ejemplo `a=4, b=1`, el dominio de `f(x)` es `[-2, 2]`.</p>
+                     <div class="graph-container">
+                        <canvas id="graph-complex-b"></canvas>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+    </main>
+    
+    <script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
+    <script defer src="script.js"></script>
+</body>
+</html>
